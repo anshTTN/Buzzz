@@ -1,4 +1,4 @@
-/* Ankit's CSS */
+/* **************Ankit's CSS************ */
 .post{
   background-color: white;
 width: 35.3vw;
@@ -55,7 +55,9 @@ margin: auto;
 .activity hr{
   visibility: hidden;
 }
-/* Ansh's CSS */
+
+
+/* *******Ansh's CSS********** */
 .bgColor{
 background-color: rgb(213 213 213);
 }
@@ -160,4 +162,17 @@ background-color: rgb(213 213 213);
   position: relative;
   top: 2.2vh;
   left: 1.3vw;
+}
+.searchIcon{
+  position: relative;
+    left: 47%;
+    font-size:3vh;
+}
+.searchIcon1{
+  position: relative;
+    left: 38%;
+    font-size:3vh;
+}
+.addFriendInSuggestion{
+  color: blue;
 }

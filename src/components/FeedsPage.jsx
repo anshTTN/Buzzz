@@ -6,6 +6,8 @@ import backgroundImg from "../images/background.png";
 import { FaRegImages } from "react-icons/fa";
 import Post from "./Post";
 import Activity from "./Activity";
+import Contacts from "./Contacts";
+import SuggestedContacts from "./SuggestedContacts";
 
 function FeedsPage() {
   return (
@@ -76,7 +78,8 @@ function FeedsPage() {
           </div>
 {/* *******************************3rd Col******************************************* */}
 <div className="col-3 mt-5 ">
-           
+           <Contacts/>
+           <SuggestedContacts/>
           </div>
 
         </div>
