@@ -176,3 +176,74 @@ background-color: rgb(213 213 213);
 .addFriendInSuggestion{
   color: blue;
 }
+
+/*------------------------------------Ankita's CSS----------------------------------------------*/
+
+section{
+  position :absolute;
+  width: 50vw;
+  height: 50vh;
+
+  top:50%;
+  left:50%;
+  margin-right: -50%;
+  transform : translate(-50% , -50%);
+
+}
+
+.form-content{
+  padding-top: 15px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  padding-left: 80px;
+}
+
+.heading_1{
+  padding-top: 10px;
+}
+.heading_2{
+  padding-bottom: 10px;
+}
+.row_1{
+  padding-top: 10px;
+}
+
+
+.loginlogo{
+  padding-top: 10px;
+  text-align: center;
+}
+.loginlogo img {
+  height: 50px;
+    width: auto;
+
+}
+
+#btn_1{
+  height: 40px;
+  width: 170px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  background-color: #FFFFFF;
+  color : #FF1493;
+  border-color: #FF1493;
+
+  border-radius: 50px;
+
+}
+.btn_1{
+  padding-top: 20px;
+}
+
+#btn_2{
+  height: 40px;
+  width: 170px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  background-color: #800080;
+  border: none;
+
+  border-radius: 50px;
+}
