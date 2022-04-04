@@ -1,19 +1,20 @@
 
 import './App.css';
-import './css/style.css';
-import Login from "./components/login.jsx";
-import Post from "./components/post.jsx";
-import Activity from "./components/activity.jsx";
-import Suggestions from "./components/suggestions.jsx";
-
+import './css/style.css'
+import { BrowserRouter as Router, Route,Routes} from 'react-router-dom'
+import Posts from './components/FeedsPage';
 
 function App() {
   return (
-    <div className="App">
-    <Post />
-
-    <Suggestions />
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/feedsPage' element={
+          <Posts />
+          
+        }>
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,4 +1,4 @@
-function suggestions(){
+function Suggestions(){
 
 
 return (
@@ -35,4 +35,4 @@ return (
 
 }
 
-export default suggestions;
+export default Suggestions;

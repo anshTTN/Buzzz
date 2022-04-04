@@ -1,6 +1,7 @@
 /* Ankit's CSS */
 .post{
-width: 40vw;
+  background-color: white;
+width: 35.3vw;
 margin: auto;
  border-radius: 1rem;
 }
@@ -38,7 +39,8 @@ margin: auto;
 
 
 .activity{
-  width: 20vw;
+  background-color: white;
+  width: 19.2vw;
   border-radius: 1rem;
 }
 
@@ -52,4 +54,110 @@ margin: auto;
 
 .activity hr{
   visibility: hidden;
+}
+/* Ansh's CSS */
+.bgColor{
+background-color: rgb(213 213 213);
+}
+*{
+  padding:0px;
+  margin:0px;
+  font-family: cursive;
+}
+
+.logo{
+  height: 20px;
+  width: 20px;
+}
+.circle{
+  border: 1px solid black;
+  width: 33px;
+  height: 30px;
+  border-radius: 50%;
+
+}
+.size{
+  width: 10%;
+}
+.profileImg{
+  height: 114px;
+  border: 1px solid black;
+  width: 36%;
+  border-radius: 55%;
+  position: relative;
+  left: 32%;
+  bottom: 55px;
+}
+.backgroundImg{
+  width: 100%;
+  border-radius: 4%;
+}
+.profileContainer{
+  background-color: white;
+  border-radius: 4%;
+  height: 63vh;;
+}
+.profileName{
+  text-align:center;
+  position: relative;
+  bottom:40px;
+  font-weight: bold;
+  font-size: 29px;
+}
+.profileStatus{
+  text-align:center;
+  position: relative;
+  bottom:60px;
+  font-size:19px;
+  color: rgb(114, 104, 104);
+}
+.profileViewsNo{
+  text-align:center;
+  position: relative;
+  bottom:40px;
+  font-weight: bold;
+  font-size: 29px;
+  color: rgb(114, 104, 104);
+}
+.profileViewsText{
+  text-align:center;
+  position: relative;
+  bottom:40px;
+  font-size: 16px;
+  color: rgb(114, 104, 104);
+}
+.searchBar{
+  background-color: white;
+  height: 8vh;
+  border-radius: 1vw;
+}
+.col2Size{
+  width: 37vw;
+}
+.search{
+  border-radius: 3vw;
+  position: relative;
+  top: 1vh;
+  width: 17vw;
+  right: 2vw;
+}
+.searchInput{
+  position: relative;
+  top: 13%;
+  height: 4vh;
+  border-radius: 3vw;
+  border: 0;
+}
+.imageIcon{
+  color: rgba(81, 149, 12, 0.952);
+  font-size: 4vh;
+  position: relative;
+  top: 0.4vh;
+}
+.imageText{
+  color: rgb(78, 83, 85);
+  font-size: 2.3vh;
+  position: relative;
+  top: 2.2vh;
+  left: 1.3vw;
 }
