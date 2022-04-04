@@ -1,12 +1,12 @@
 /* Ankit's CSS */
-hr{
-  visibility: hidden;
-}
-
 .post{
 width: 40vw;
 margin: auto;
  border-radius: 1rem;
+}
+
+.post hr{
+  visibility: hidden;
 }
 
 .caption{
@@ -34,4 +34,22 @@ margin: auto;
 .comment-text{
   width: 30vw;
   border-radius: 0.8rem;
+}
+
+
+.activity{
+  width: 20vw;
+  border-radius: 1rem;
+}
+
+.activity div{
+  text-align: left;
+}
+
+.activity p{
+  margin-left: 5%;
+}
+
+.activity hr{
+  visibility: hidden;
 }
