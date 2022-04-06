@@ -15,8 +15,8 @@ function FeedsPage() {
       <Header />
       <div className="bgColor">
 
-      
-      <div className="container ">
+
+      <div className="container">
         <div className="row">
 
           {/* ********************1st col************** */}
@@ -74,7 +74,7 @@ function FeedsPage() {
            <Post/>
            <Post/>
 
-      
+
           </div>
 {/* *******************************3rd Col******************************************* */}
 <div className="col-3 mt-5 ">

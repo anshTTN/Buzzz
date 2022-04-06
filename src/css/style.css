@@ -34,7 +34,7 @@ margin: auto;
 
 .comment-text{
   width: 30vw;
-  border-radius: 0.8rem;
+  border-radius: 0.78rem;
 }
 
 
@@ -56,6 +56,11 @@ margin: auto;
   visibility: hidden;
 }
 
+
+.searched-users{
+  width: 80%;
+  margin: auto;
+}
 
 /* *******Ansh's CSS********** */
 .bgColor{
