@@ -3,6 +3,7 @@ import './css/style.css'
 import { BrowserRouter as Router, Route,Routes} from 'react-router-dom'
 import FeedsPage from './components/FeedsPage';
 import Login from './components/Login';
+import Friendlist from './components/Friendlist';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Login />
         }>
         </Route>
+        <Route path='/friendlist' element={<Friendlist />}> </Route>
       </Routes>
     </Router>
   );

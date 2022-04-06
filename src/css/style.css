@@ -247,3 +247,14 @@ section{
 
   border-radius: 50px;
 }
+
+                 /*--------------------FriendListCSS------------------*/
+
+.searched-users{
+  width: 80%;
+  margin: auto;
+}
+
+.messagediv{
+  padding-bottom: 10px;
+}
