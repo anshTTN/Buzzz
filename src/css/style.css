@@ -62,6 +62,10 @@ margin: auto;
   margin: auto;
 }
 
+.signup hr{
+  visibility: hidden;
+}
+
 /* *******Ansh's CSS********** */
 .bgColor{
 background-color: rgb(213 213 213);
