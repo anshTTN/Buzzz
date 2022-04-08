@@ -34,7 +34,7 @@ margin: auto;
 
 .comment-text{
   width: 30vw;
-  border-radius: 0.8rem;
+  border-radius: 0.78rem;
 }
 
 
@@ -56,6 +56,15 @@ margin: auto;
   visibility: hidden;
 }
 
+
+.searched-users{
+  width: 80%;
+  margin: auto;
+}
+
+.signup hr{
+  visibility: hidden;
+}
 
 /* *******Ansh's CSS********** */
 .bgColor{
@@ -177,6 +186,7 @@ background-color: rgb(213 213 213);
   color: blue;
 }
 
+
 /*------------------------------------Ankita's CSS----------------------------------------------*/
 
 section{
@@ -251,4 +261,15 @@ section{
   width: 12vw;
   height:6vh;
   margin-left: 4.5vw;
+}
+
+                 /*--------------------FriendListCSS------------------*/
+
+.searched-users{
+  width: 80%;
+  margin: auto;
+}
+
+.messagediv{
+  padding-bottom: 10px;
 }

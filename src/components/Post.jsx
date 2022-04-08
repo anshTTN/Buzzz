@@ -6,8 +6,14 @@ function Post() {
       <div className="post border mt-5">
         <div className="d-flex justify-content-between py-4 px-3">
           <div className="flex-1">
+          <div className="d-flex pt-2">
+          <div>
             <i className="fa-solid fa-user fa-2xl"></i>
-            <h4> Ankit Bisht </h4>
+          </div>
+            <div>
+              <h4> Ankit Bisht </h4>
+            </div>
+          </div>
           </div>
           <div className="flex-1">
             <i className="fa-solid fa-ellipsis fa-xl"></i>
@@ -37,15 +43,23 @@ function Post() {
             <h5 className="d-inline"> Comment </h5>
           </div>
         </div>
-        <div className="comment-box px-3 py-3 caption">
+
+        <div className="comment-box px-3 py-3 caption d-flex">
+        <div>
           <i className="fa-solid fa-user fa-2xl px-4"></i>
+        </div>
+
+          <div>
           <input
             tyep="text"
             name="comment"
             placeholder="Write a comment..."
             className="comment-text"
           />
+          </div>
+
         </div>
+
       </div>
     </>
   );
