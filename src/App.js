@@ -12,7 +12,7 @@ function App() {
           <FeedsPage />
         }>
         </Route>
-        <Route path='/login' element={
+        <Route path='/' element={
           <Login />
         }>
         </Route>
