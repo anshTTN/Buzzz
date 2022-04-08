@@ -2,12 +2,22 @@ import React from 'react'
 import Header from './Header';
 import UserImage from '../images/user.jpg';
 import {useEffect, useContext} from 'react';
-import FriendsContext from '../context/FriendsContext.jsx';
+import {useState} from 'react';
 
 
 const FriendList = () => {
 
-const {friends, searchFriends, loading} = useContext(FriendsContext);
+  const [friends, setFriends] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const searchFriends = async ()=>{
+  const result = await fetch("/friends",{
+        method: 'GET'
+      });
+      const data = await result.json();
+      setFriends(data);
+      setLoading(false);
+    }
 
 useEffect(()=>{
   searchFriends();

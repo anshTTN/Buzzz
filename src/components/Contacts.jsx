@@ -1,19 +1,17 @@
 import React from 'react'
 import profile from "../images/profile.png";
 import { FaSearch } from "react-icons/fa";
-import {useRef, useContext} from "react";
-import UsersContext from "../context/UsersContext.jsx";
-import UserResults from "./UserResults.jsx";
+import {useRef, useState} from "react";
 
 function Contacts() {
 
-  const {searchUser} = useContext(UsersContext);
+const [name, setName] = useState(null);
 
- const input = useRef(null);
- const onButtonClick = () => {
- const name = input.current.value;
- searchUser(name);
-  }
+function handleChange(e){
+
+console.log(e.target.value);
+setName(e.target.value);
+}
 
 
 
@@ -32,9 +30,9 @@ function Contacts() {
        <h4 className="flex-1"> Contacts </h4>
 
        <div className="input-group rounded flex-2 px-2">
-         <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" ref={input}/>
+         <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onChange={handleChange}/>
          <span className="input-group-text border-0" id="search-addon">
-         <button className="btn btn-primary btn-sm" onClick={onButtonClick}>  <i className="fas fa-search"></i> </button>
+         <a href={`/users/${name}`}>  <i className="fas fa-search"></i> </a>
          </span>
        </div>
 
@@ -79,7 +77,6 @@ function Contacts() {
 
 
      </div>
-    {/* <UserResults /> */}
    </>
   )
 }
