@@ -8,20 +8,20 @@ function UserResults(){
 const params = useParams();
 const name = params.name;
 
-  const [user, setUser] = useState([]);
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-     async function searchUser(name){
+     async function searchUsers(name){
       const result = await fetch(`/users/${name}`,{
             method: 'GET'
           });
           const data = await result.json();
-          setUser(data);
+          setUsers(data);
           setLoading(false);
     }
 
 useEffect(()=>{
-  searchUser(name);
+  searchUsers(name);
 }, []);
 
 if(loading){
@@ -36,16 +36,18 @@ if(loading){
     <Header />
     <div className="row py-4 px-4 searched-users">
 
-
+{users.map((user) => (
 
     <div className="card col-4">
       <img className="card-img-top" src={UserImage} alt="Card image cap" />
       <div className="card-body">
         <h5 className="card-title">{user.name}</h5>
-        <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <p>{user.bio}</p>
         <a href="#" class="btn btn-primary">View Profile</a>
       </div>
     </div>
+
+))}
 
  </div>
  </>

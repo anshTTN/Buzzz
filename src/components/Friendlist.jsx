@@ -31,6 +31,12 @@ if(loading){
   )
 }else{
 
+if(friends.length == 0){
+  return (
+    <h1> No friends found :( </h1>
+  );
+}else{
+
   return (
     <div>
         <Header />
@@ -63,10 +69,8 @@ if(loading){
     </div>
   )
 
-
 }
-
-
+}
 
 }
 
