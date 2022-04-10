@@ -6,28 +6,45 @@ import FriendList from './components/FriendList';
 import Signup from './components/Signup';
 import UserResults from './components/UserResults';
 import Login from './components/Login';
+import AuthRoute from './components/AuthRoute';
+import Profile from './components/Profile';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path='/' element={
-          <FeedsPage />
-        }>
-        </Route>
-        <Route path='/signup' element={
-          <Signup />
+          <Login />
         } />
+          <Route path='/signup' element={
+            <Signup />
+          } />
+
+
+          {/* AuthRoutes */}
+          <Route path='/feedsPage' element={
+          <AuthRoute>
+          <FeedsPage />
+          </AuthRoute>
+          }
+          />
+          <Route path='/profile' element={
+          <AuthRoute>
+          <Profile />
+          </AuthRoute>
+          }
+          />
+          
+          
+          
         <Route path='/users/:name' element={
           <UserResults />
         } />
         <Route path='/friendList' element={
           <FriendList />
         } />
-        <Route path='/login' element={
-          <Login />
-        } />
       </Routes>
+      {/* <AuthRoute path='/feedsPage' component={FeedsPage}/> */}
     </Router>
   );
 }

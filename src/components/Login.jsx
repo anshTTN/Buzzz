@@ -1,38 +1,61 @@
 import GoogleLogin from 'react-google-login';
-import { useState } from 'react';
+import {  useState } from 'react';
 import loginlogo from '../images/newlogo.png';
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link,useLocation } from "react-router-dom";
+import Alerts from './Alerts';
 function Login(){
-  
-//google login
-  const handleLogin=async (googleData)=>{
-    const res=await fetch('/',{
-      method:'POST',
-      body:JSON.stringify({
-        token:googleData.tokenId,
-      }),
-      headers:{
-        'content-Type':'application/json',
-      },
-    })
-    const data=await res.json();
-    console.log(data);
-    console.log('logged in')
-  }
 
-  const handleFailure=(result)=>{
-    alert(result);
+const [credentials,setCredentials]=useState({email:"",password:""})
+const [type,setType]=useState(null)
+const [msg,setMsg]=useState(null)
+const navigate = useNavigate();
+
+
+const showAlert=(type,msg)=>{
+  setType(type);
+  setMsg(msg);
+  setTimeout(()=>{
+    setType(null)
+    setMsg(null)
+  },5000)
+}
+  const {state}=useLocation();
+if(state!=null && state.isRegistered===true){
+  showAlert('alert alert-success',"Registered Successfuly. Please login to continue")
+  state.isRegistered=false;
+}
+//google login
+const handleLogin=async (googleData)=>{
+  const res=await fetch('/googleAuth',{
+    method:'POST',
+    body:JSON.stringify({
+      token:googleData.tokenId,
+    }),
+    headers:{
+      'content-Type':'application/json',
+    },
+  })
+  const data=await res.json();
+  console.log(data);
+  if(data.status){
+    localStorage.setItem('token',data.token)
+    navigate('/feedsPage')
   }
+  else{
+    showAlert("alert alert-danger",data.message)
+  }
+}
+
+const handleFailure=(result)=>{
+  showAlert("alert alert-danger","Getting some network error try again")
+}
 
 
 //manual login
 
-const [credentials,setCredentials]=useState({email:"",password:""})
-const navigate = useNavigate();
 
 const handleSubmit= async (e)=>{
   e.preventDefault();
-//   console.log(credentials.email,credentials.password)
 
 const res=await fetch('/login',{
   method:'POST',
@@ -51,7 +74,7 @@ if(data.status==='success'){
   navigate('/feedsPage')
 }
 else
-navigate('/')
+showAlert("alert alert-danger",data.message)
 }
 
 const onChange=(e)=>{
@@ -61,6 +84,7 @@ const onChange=(e)=>{
 
 return (
   <>
+ <Alerts type={type} msg={msg} />
     <section>
 <div className="container shadow p-3 mb-5 bg-white rounded">
 
@@ -85,7 +109,6 @@ return (
         </div> */}
         {/* <div className="btn_1 ms-5"> */}
         <GoogleLogin
-        // className="btn btn-primary" id="btn_1"
         className="googleBtn"
         theme='dark'
         clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
@@ -110,16 +133,20 @@ return (
        <form onSubmit={handleSubmit} className = "login-form">
          <div className="d-grid gap-4">
            <div className="row row_1">
-             <input type="email" className="form-control" name="email" onChange={onChange} value={credentials.email} placeholder="TTN Username" />
+             <input type="email" className="form-control" name="email" onChange={onChange} value={credentials.email} placeholder="TTN Username" required/>
            </div>
 
            <div className="row row_2">
-             <input className="form-control" type="password" id = "inputPassword" name='password' onChange={onChange} value={credentials.password} placeholder="Password" autoComplete='off' />
+             <input className="form-control" type="password" id = "inputPassword" name='password' onChange={onChange} value={credentials.password} placeholder="Password" autoComplete='off' required />
            </div>
 
            <div className="row row_3">
              
-             <div className="col-12">
+             <div className='col-6'>
+             <Link to="/signup">Don't have acccount Click Here to register</Link>
+             </div>
+
+             <div className="col-6">
                <div className="forgotPswd forgot float-right">
                 <a href="#" id="forgot-link">Forgot Password?</a>
               </div>
