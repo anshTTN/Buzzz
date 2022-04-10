@@ -13,5 +13,5 @@ const userLoginRoutes=require(path.join(__dirname,"routes/user_routes"))
 app.use(userLoginRoutes)
 
 app.listen(5000,()=>{
-    console.log("Bckend server is connected on PORT 5000")
+    console.log("Backend server is connected on PORT 5000")
 })

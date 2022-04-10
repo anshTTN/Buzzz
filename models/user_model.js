@@ -4,39 +4,39 @@ const Schema=mongoose.Schema;
 const UserRegistrationSchema=new Schema({
     first_name:{
         type:String,
-        required:true
+        default:null
     },
     last_name:{
         type:String,
-        required:true
+        default:null
     },
     email:{
         type:String,
-        required:true,
+        default:null
     },
     designation:{
         type:String,
-        required:true
+        default:null
     },
     gender:{
         type:String,
-        required:true
+        default:null
     },
     dob:{
         type:Date,
-        required:true
+        default:null
     },
     city:{
         type:String,
-        required:true
+        default:null
     },
     state:{
         type:String,
-        required:true
+        default:null
     },
     pin_code:{
         type:Number,
-        required:true
+        default:null
     },
     my_website:{
         type:String,
@@ -44,7 +44,11 @@ const UserRegistrationSchema=new Schema({
     },
     password:{
         type:String,
-        required:true
+        default:null
+    },
+    googleAuth:{
+        type:Boolean,
+        default:false
     }
 });
 
