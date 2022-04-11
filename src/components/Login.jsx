@@ -3,6 +3,7 @@ import {  useState } from 'react';
 import loginlogo from '../images/newlogo.png';
 import { useNavigate,Link,useLocation } from "react-router-dom";
 import Alerts from './Alerts';
+import ForgotPassword from './ForgotPassword';
 function Login(){
 
 const [credentials,setCredentials]=useState({email:"",password:""})
@@ -20,6 +21,14 @@ const showAlert=(type,msg)=>{
   },5000)
 }
   const {state}=useLocation();
+  if(state!=null){
+    console.log(state.passwdChanged)
+    if(state.passwdChanged){
+      showAlert("alert alert-success","Password Changed")
+      state.passwdChanged=false
+    }
+
+  }
 if(state!=null && state.isRegistered===true){
   showAlert('alert alert-success',"Registered Successfuly. Please login to continue")
   state.isRegistered=false;
@@ -84,7 +93,7 @@ const onChange=(e)=>{
 
 return (
   <>
- <Alerts type={type} msg={msg} />
+<Alerts type={type} msg={msg} />
     <section>
 <div className="container shadow p-3 mb-5 bg-white rounded">
 
@@ -148,7 +157,7 @@ return (
 
              <div className="col-6">
                <div className="forgotPswd forgot float-right">
-                <a href="#" id="forgot-link">Forgot Password?</a>
+                <Link to="/forgotpswd">Forgot Password?</Link>
               </div>
              </div>
            </div>

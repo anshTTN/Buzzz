@@ -8,6 +8,7 @@ import UserResults from './components/UserResults';
 import Login from './components/Login';
 import AuthRoute from './components/AuthRoute';
 import Profile from './components/Profile';
+import ForgotPassword from './components/ForgotPassword';
 
 function App() {
   return (
@@ -35,8 +36,9 @@ function App() {
           }
           />
           
-          
-          
+          <Route path='/forgotpswd' element={
+          <ForgotPassword />
+        } />
         <Route path='/users/:name' element={
           <UserResults />
         } />

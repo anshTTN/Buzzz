@@ -216,9 +216,8 @@ else{
         <hr />
         <div className="row">
           <div className="col">
-            <button type="submit" className="btn btn-lg btn-primary"> SignUp </button>
+            <button type="submit" className="btn btn-lg btn-primary"> Register </button>
           </div>
-          {/* --OR-- */}
           </div>
           <div className="mt-1">OR</div>
           <div className="row">
