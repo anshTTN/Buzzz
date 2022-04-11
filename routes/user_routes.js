@@ -9,4 +9,8 @@ router.post("/register",userLoginController.userRegistration);
 
 router.post("/login",userLoginController.userLogin);
 
+router.post("/verifyEmail",userLoginController.verifyEmail);
+
+router.post("/forgotPassword",userLoginController.changePassword);
+
 module.exports=router;

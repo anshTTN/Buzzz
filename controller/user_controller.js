@@ -210,3 +210,62 @@ exports.userLogin=(req,res)=>{
     })
 }
 
+
+exports.verifyEmail=(req,res)=>{
+    const {
+        email,dob
+    }=req.body;
+    usersData.findOne({email:email}).exec((err,user)=>{
+        if(!user){
+            return res.status(400).json({status:'failure',message:'This email is not registered.'})
+        }
+        else if(user.googleAuth){
+            return res.status(400).json({status:'failure',message:'This email is Authenticated with Google . Try Registering using this email.'})
+        }
+        else{
+            const userDob=JSON.stringify(user.dob).substring(0,11)+"\""
+                if(JSON.stringify(dob)===userDob)
+                return res.status(200).json({status:'success',message:'Date of birth verified.Now you can change your password'})
+                else
+                return res.status(400).json({status:'failure',message:'Date of birth is incorrect.'})
+         
+        }
+    })
+}
+
+exports.changePassword=(req,res)=>{
+    const {
+        password,confirmPassword,email
+    }=req.body;
+    if(password===confirmPassword){
+        if(!(/(?=.{8,})/).test(password)){
+            return res.status(400).json({status:'failure',message:'Password must be atleast 8 characters long'})
+        }
+        else if(!(/(?=.*[a-z])/).test(password)){
+            return res.status(400).json({status:'failure',message:'Password must have atleast one lowercase alphabet'})
+        } else if(!(/(?=.*[A-Z])/).test(password)){
+            return res.status(400).json({status:'failure',message:'Password must have atleast one UPPERCASE alphabet'})
+        } else if(!(/(?=.*\d)/).test(password)){
+            return res.status(400).json({status:'failure',message:'Password must have atleast one digit'})
+        }else if(!(/(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹])/).test(password)){
+            return res.status(400).json({status:'failure',message:'Password must have atleast one special character'})
+        }
+        else{
+            const salt=bcrypt.genSaltSync(10);
+                        const updatedData={
+                            password:bcrypt.hashSync(password,salt)
+                        }
+                        usersData.findOneAndUpdate({email:email},updatedData,(err,doc)=>{
+                            if(err)
+                            return res.status(400).json({status:"failure",message:'Some network error occured try again ....'}) 
+                            else 
+                            return res.status(200).json({status:"success",message:"Password Changed Successfully"})
+                        })
+        }
+    }
+    else{
+        return res.status(400).json({status:"failure",message:'Password do not match . Try again...'}) 
+    }
+
+           
+}
