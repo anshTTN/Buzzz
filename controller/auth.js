@@ -1,14 +1,15 @@
 const jwt = require('jsonwebtoken')
+const dotenv= require('dotenv')
+dotenv.config();
+const JWT_SECRET=process.env.JWT_SECRET
 
-const JWT_SECRET='SLEEPYANKITBUOYYYYY'
-
-module.exports=(req,res,next)=>{
-    let token=req.headers('auth-token');
+exports.verifyUsers=(req,res,next)=>{
+    let token=req.header('auth-token');
 
     if(!token){
         res.status(401).send({error:"Please authenticate using a valid token"})
     }
-    
+
 
         try{
             const data =jwt.verify(token,JWT_SECRET);
@@ -18,6 +19,6 @@ module.exports=(req,res,next)=>{
         catch(err){
             res.status(401).send({err:"Please authenticate using a valid token"})
         }
-    
+
 
 }

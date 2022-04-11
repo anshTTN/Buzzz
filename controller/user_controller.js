@@ -51,7 +51,7 @@ exports.googleLogin=async (req,res)=>{
                     console.log(err)
                     return res.status(400).json({status:"failure",message:'Some network error occured try again ....'})
                 })
-                
+
             }
             else{
                 return res.status(400).json({status:"failure",message:'Some network error occured try again ....'})
@@ -72,13 +72,13 @@ exports.userRegistration=(req,res)=>{
     const emailRegex=/^[A-Za-z0-9._]{1,}@tothenew.com$/
 
     usersData.findOne({email:email}).exec((err,user)=>{
-      
+
         if(user && !user.googleAuth){
             return res.status(400).json({status:'failure',message:'This email is already registered.'})
         }
         else if((user && user.googleAuth)){
 
-            
+
                 if(!(/(?=.{8,})/).test(password)){
                     return res.status(400).json({status:'failure',message:'Password must be atleast 8 characters long'})
                 }
@@ -107,15 +107,15 @@ exports.userRegistration=(req,res)=>{
                         password:bcrypt.hashSync(password,salt),
                         googleAuth:false
                     }
-        
+
                     usersData.findOneAndUpdate({email:email},updatedUserDetails,(err,doc)=>{
                         if(err)
-                        return res.status(400).json({status:"failure",message:'Some network error occured try again ....'}) 
-                        else 
+                        return res.status(400).json({status:"failure",message:'Some network error occured try again ....'})
+                        else
                         return res.status(200).json({status:"success",message:"Registered succesfully",email:email,password:password})
                     })
                 }
-            
+
 
 
         }
@@ -153,7 +153,7 @@ exports.userRegistration=(req,res)=>{
                         password:bcrypt.hashSync(password,salt),
                         googleAuth:false
                     })
-        
+
                     userDetails.save().then(resp=>{
                         return res.status(200).json({status:"success",message:"Registered succesfully",email:resp.email,password:resp.password})
                     }).catch(err=>{
@@ -205,7 +205,7 @@ exports.userLogin=(req,res)=>{
                     token:authToken
                 })
             }
-         
+
         }
     })
 }
@@ -228,7 +228,7 @@ exports.verifyEmail=(req,res)=>{
                 return res.status(200).json({status:'success',message:'Date of birth verified.Now you can change your password'})
                 else
                 return res.status(400).json({status:'failure',message:'Date of birth is incorrect.'})
-         
+
         }
     })
 }
@@ -257,15 +257,27 @@ exports.changePassword=(req,res)=>{
                         }
                         usersData.findOneAndUpdate({email:email},updatedData,(err,doc)=>{
                             if(err)
-                            return res.status(400).json({status:"failure",message:'Some network error occured try again ....'}) 
-                            else 
+                            return res.status(400).json({status:"failure",message:'Some network error occured try again ....'})
+                            else
                             return res.status(200).json({status:"success",message:"Password Changed Successfully"})
                         })
         }
     }
     else{
-        return res.status(400).json({status:"failure",message:'Password do not match . Try again...'}) 
+        return res.status(400).json({status:"failure",message:'Password do not match . Try again...'})
     }
 
-           
+
+}
+
+
+exports.getUser= async (req,res,next)=>{
+  const email=req.user.email;
+  usersData.findOne({email:email}).exec((err,user)=>{
+    if(user)
+    return res.status(200).json({status:"success",user:user})
+    else
+      return res.status(400).json({status:"failure",message:'Some network error occured try again ....'})
+  })
+
 }

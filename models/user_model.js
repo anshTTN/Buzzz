@@ -42,6 +42,10 @@ const UserRegistrationSchema=new Schema({
         type:String,
         default:null
     },
+    bio:{
+    type:String
+  },
+  requests:[],
     password:{
         type:String,
         default:null
