@@ -3,8 +3,10 @@ import './css/style.css'
 import { BrowserRouter as Router, Route,Routes} from 'react-router-dom'
 import FeedsPage from './components/FeedsPage';
 import FriendList from './components/FriendList';
+import FriendRequests from './components/FriendRequests';
 import Signup from './components/Signup';
 import UserResults from './components/UserResults';
+import AllFriends from './components/AllFriends';
 import Login from './components/Login';
 import AuthRoute from './components/AuthRoute';
 import Profile from './components/Profile';
@@ -29,13 +31,40 @@ function App() {
           </AuthRoute>
           }
           />
+
+     {/*  Search Friends  */}
+     <Route path='/searchfriends' element={
+     <AuthRoute>
+     <AllFriends />
+     </AuthRoute>
+     }
+     />
+
+
+         {/* search suggestions */}
+         <Route path='/suggestions' element={
+         <AuthRoute>
+         <UserResults />
+         </AuthRoute>
+         }
+         />
+
+
+        {/* Friend Requests */}
+        <Route path='/friendRequests' element={
+        <AuthRoute>
+        <FriendRequests />
+        </AuthRoute>
+        }
+        />
+
           <Route path='/profile' element={
           <AuthRoute>
           <Profile />
           </AuthRoute>
           }
           />
-          
+
           <Route path='/forgotpswd' element={
           <ForgotPassword />
         } />

@@ -1,71 +1,91 @@
 import React from 'react'
 import profile from "../images/profile.png";
 import { FaSearch } from "react-icons/fa";
+import {Link} from "react-router-dom";
+import {useEffect, useState} from "react";
 
 function SuggestedContacts() {
-  return (
-    <div className='py-4 activity border mt-4'>
+
+  const [users, setUsers] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(()=>{
+  searchAllUsers();
+  }, []);
+
+  async function searchAllUsers(){
+   const result = await fetch(`/searchallusers`,{
+         method: 'POST',
+         headers:{
+           'content-Type':'application/json',
+           'auth-token':localStorage.getItem('token')
+         }
+       });
+       const data = await result.json();
+         setUsers(data.users);
+         setLoading(false);
+  }
 
 
 
-         <div className="d-flex px-3">
+  if(loading){
+    return(
+      <h1> Loading .. </h1>
+    )
+  }else{
 
-         <h4 className="flex-1">Suggestions</h4>
+    if(users.length == 0){
+      return (
+        <>
+        <div className='py-4 activity border contactContainer'>
+               <h4 className="px-3"> Suggestions </h4>
+                 <hr />
 
-         <div className="input-group rounded flex-2 px-2">
-           <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" size="1"/>
-           <span class="input-group-text border-0" id="search-addon">
-             <i class="fas fa-search"></i>
-           </span>
-         </div>
+                 <div className="d-flex justify-content-around">
 
-         </div>
+               <h4 className=""> No suggestions yet </h4>
+               <Link to="/suggestions"> <i className="fa-solid fa-magnifying-glass"></i> </Link>
 
-        <hr />
+               </div>
+
+        </div>
+      </>
+      );
+    }else{
 
 
 
+    return (
+      <>
+      <div className='py-4 activity border'>
 
+      <div className="d-flex justify-content-around">
+
+    <h4 className=""> Suggestions </h4>
+    <Link to="/suggestions"> <i className="fa-solid fa-magnifying-glass"></i> </Link>
+
+    </div>
+
+      <hr />
+
+      {users.map((user) => (
 
         <div className="d-flex px-3">
         <img className="circle me-3" src={profile} alt="" />
 
-          <p>Ankit Bisht</p>
-          <p className="addFriendInSuggestion ms-5">+ Friend</p>
+          <p>{user.first_name}</p>
         </div>
 
-
-
-        <div className="d-flex px-3">
-        <img className="circle me-3" src={profile} alt="" />
-
-          <p>Ankit Bisht</p>
-          <p className="addFriendInSuggestion ms-5">+ Friend</p>
-        </div>
+      ))}
 
 
 
-        <div className="d-flex px-3">
-        <img className="circle me-3" src={profile} alt="" />
-
-          <p>Ankit Bisht</p>
-          <p className="addFriendInSuggestion ms-5">+ Friend</p>
-        </div>
-
-
-
-        <div className="d-flex px-3">
-        <img className="circle me-3" src={profile} alt="" />
-
-          <p>Ankit Bisht</p>
-          <p className="addFriendInSuggestion ms-5">+ Friend</p>
-        </div>
-
-
-
-
-     </div>
-  )
+           </div>
+         </>
+        )
 }
+}
+}
+
 
 export default SuggestedContacts

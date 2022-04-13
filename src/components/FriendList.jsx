@@ -1,45 +1,58 @@
 import React from 'react'
 import Header from './Header';
 import UserImage from '../images/user.jpg';
-import {useEffect, useContext} from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+
 
 
 const FriendList = () => {
 
+
   const [friends, setFriends] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const searchFriends = async ()=>{
-  const result = await fetch("/friends",{
-        method: 'GET'
-      });
-      const data = await result.json();
-      setFriends(data);
-      setLoading(false);
+     async function searchFriends(){
+      const result = await fetch(`/searchfriends`,{
+            method: 'GET',
+            headers:{
+              'content-Type':'application/json',
+              'auth-token':localStorage.getItem('token')
+            },
+          });
+          const data = await result.json();
+          setFriends(data.users);
+          setLoading(false);
     }
 
 useEffect(()=>{
   searchFriends();
 }, []);
 
+
 if(loading){
   return(
-    <h1> loading.. </h1>
+    <h1> Loading .. </h1>
   )
 }else{
 
+if(friends.length == 0){
+  return (
+    <h1> No friends found :( </h1>
+  );
+}else{
 
   return (
     <div>
         <Header />
         <div className="row py-4 px-4 searched-users">
 
+
 {friends.map((friend) => (
+
   <div className="card col-md-4 col-sm-6 col-xs-12">
       <img className="card-img-top" src={UserImage} alt="Card image cap" />
       <div className="card-body">
-          <h5 className="card-title">{friend.name}</h5>
+          <h5 className="card-title">{friend.first_name}</h5>
           <p>{friend.bio}</p>
           <div className=' buttonsforusers'>
               <div className="row">
@@ -49,20 +62,19 @@ if(loading){
           </div>
       </div>
   </div>
+
 ))}
 
 
 
-         </div>
+
+        </div>
 
     </div>
   )
 
-
-
 }
-
-
+}
 
 }
 

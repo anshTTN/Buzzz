@@ -1,59 +1,146 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Header from "./Header";
-import profile from "../images/profile.png";
-import backgroundImg from "../images/background.png";
+import adminProfilePic from "../images/profile.png";
+import adminCoverPic from "../images/background.png";
 import { FaRegImages } from "react-icons/fa";
 import Post from "./Post";
-import Activity from "./Activity";
 import Contacts from "./Contacts";
 import SuggestedContacts from "./SuggestedContacts";
 
 function FeedsPage() {
   return (
-    <div>
+    <div className = 'bgColor'>
+      <>
       <Header />
-      <div className="bgColor">
+       <div className='row FeedContent' >
 
+           {/*---------------------Left Part ------------------------*/}
 
-      <div className="container">
-        <div className="row">
+           <div className='col-xl-3 col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+           <div className="col align-self-center">
+                <div className='container adminProfile' style={{backgroundColor : "white"}}>
+                    <div className="row  d-flex justify-content-center">
 
-          {/* ********************1st col************** */}
-          <div className="col-3 mt-5 ">
-            <div className="px-0 border profileContainer">
-              <div className="">
-                <img className="backgroundImg " src={backgroundImg} alt="" />
-              </div>
-              <img className="profileImg" src={profile} alt="" />
-              <p className="profileName">Ansh Mittal</p>
-              <p className="profileStatus">Newly Recruit at TTN</p>
-              <div className="row">
-                <div className="col">
-                  <p className="profileViewsNo">234</p>
-                  <p className="profileViewsText">Profile Views</p>
-                  <div className="line"></div>
+                            <img className='adminCoverPic'  src={adminCoverPic} alt="" />
+                            <img className='adminProfilePic' src={adminProfilePic} alt="" />
+                            <p className="profileName">Ansh Mittal</p>
+                            <p className="profileStatus">Newly Recruit at TTN</p>
+                            <div className="row">
+                                <div className="col">
+                                    <p className="profileViewsNo">234</p>
+                                    <p className="profileViewsText">Profile Views</p>
+
+                                </div>
+                                <div className="col">
+                                    <p className="profileViewsNo">10</p>
+                                    <p className="profileViewsText">Post</p>
+                                </div>
+                            </div>
+
+                    </div>
                 </div>
-                <div className="col">
-                  <p className="profileViewsNo">10</p>
-                  <p className="profileViewsText">Post</p>
+
+                <div className='col align-self-center'>
+                    <div className='container activityCon'>
+                        <div className="d-flex flex-column bd-highlight mb-3">
+                            <div className="p-2 bd-highlight">
+                                <h4> Recent </h4>
+                                <div className='d-flex'>
+                                    <i className="fa-solid fa-hashtag"></i>
+                                    <p>#javascript</p>
+
+
+                                </div>
+                                <div className='d-flex'>
+                                    <i className="fa-solid fa-calendar"></i>
+                                    <p>Mobile conference 2021</p>
+
+
+                                </div>
+                                <div className='d-flex'>
+                                    <i className="fa-solid fa-user-group"></i>
+                                    <p>Freelance Developers</p>
+
+
+                                </div>
+
+
+
+                            </div>
+                            <hr />
+                            <div className="p-2 bd-highlight">
+                                <h4> Groups </h4>
+                                <div className='d-flex'>
+                                    <i className="fa-solid fa-hashtag"></i>
+                                    <p>#javascript</p>
+
+
+                                </div>
+                                <div className='d-flex'>
+                                    <i className="fa-solid fa-calendar"></i>
+                                    <p>Mobile conference 2021</p>
+
+
+                                </div>
+                                <div className='d-flex'>
+                                    <i className="fa-solid fa-user-group"></i>
+                                    <p>Freelance Developers</p>
+
+
+                                </div>
+
+
+
+                            </div>
+                            <hr />
+
+                            <div className="p-2 bd-highlight">
+                                <h4> Subscriptions </h4>
+                                <div className='d-flex'>
+                                    <i className="fa-solid fa-hashtag"></i>
+                                    <p>#javascript</p>
+
+
+                                </div>
+                                <div className='d-flex'>
+                                    <i className="fa-solid fa-calendar"></i>
+                                    <p>Mobile conference 2021</p>
+
+
+                                </div>
+                                <div className='d-flex'>
+                                    <i className="fa-solid fa-user-group"></i>
+                                    <p>Freelance Developers</p>
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
                 </div>
-              </div>
             </div>
-{/* Activity */}
+           </div>
 
-<Activity/>
-          </div>
-
+           {/*----------------------------Post - middle - Part ----------------------->*/}
 
 
-{/* ***************************2nd Col***************** */}
-          <div className="col-5  mt-5 col2Size">
-            <div className="border searchBar">
-            <div className="row">
-              <a className="col-2 ms-3" href="#">
-                <img className="circle me-3 mt-3" src={profile} alt="" />
-              </a>
+           <div className='col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12 post-body '>
+           <div className="col align-self-center" >
+               <div className="border searchBar searchContainer">
+                   <div className="row">
+                        <a className="col-2 ms-3" href="#">
+                            <img className="circle me-3 mt-3" src={adminProfilePic} alt="" />
+                        </a>
+
               <div className="search col-8 border">
                 <input
                   className="searchInput"
@@ -61,30 +148,37 @@ function FeedsPage() {
                   placeholder="Start a post..."
                 />
               </div>
-              <div className="col-2 d-flex">
+              <div className="col d-flex">
                 <div className="imageIcon">
                   <FaRegImages />
                 </div>
                 <div className="imageText">Photo/Video</div>
               </div>
+
             </div>
             </div>
+            <Post />
+            <Post />
+            </div>
+           </div>
 
-{/* *************************POSTS************************************************ */}
-           <Post/>
-           <Post/>
+
+           <div className='col-xl-3 col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+           <div className="Rightcontainer">
+               <div className = 'row   justify-content-center' >
+                    <Contacts />
+                </div>
+                <div className='row   justify-content-center'>
+                    <SuggestedContacts />
+
+                </div>
+
+            </div>
+           </div>
 
 
-          </div>
-{/* *******************************3rd Col******************************************* */}
-<div className="col-3 mt-5 ">
-           <Contacts/>
-           <SuggestedContacts/>
-          </div>
-
-        </div>
-      </div>
-      </div>
+       </div>
+      </>
     </div>
   );
 }

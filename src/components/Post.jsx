@@ -3,7 +3,7 @@ import UserImage from "../images/user.jpg";
 function Post() {
   return (
     <>
-      <div className="post border mt-5">
+      <div className="post border mt-5 postContainer">
         <div className="d-flex justify-content-between py-4 px-3">
           <div className="flex-1">
           <div className="d-flex pt-2">

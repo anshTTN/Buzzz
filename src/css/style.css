@@ -33,7 +33,8 @@ margin: auto;
 }
 
 .comment-text{
-  width: 30vw;
+  position: relative;
+  width: 28vw;
   border-radius: 0.78rem;
 }
 
@@ -304,9 +305,9 @@ section{
   object-fit: cover;
   position: absolute;
   left: 0;
-  right: 0; 
+  right: 0;
   margin: auto;
-  
+
   top: 300px;
   border: 3px solid white;
 
@@ -329,7 +330,7 @@ section{
     align-items: center;
     justify-content: center;
     margin: auto;
-    
+
   }
 
   .message_btn{
@@ -338,9 +339,161 @@ section{
     justify-content: center;
     margin: auto;
     background-color:  	#A7C7E7;
-    
+
   }
 
   .row_btn{
     padding-top: 30px;
+  }
+
+
+
+
+    /*  ----------------------------------------New FeedPage ----------------------->> */
+
+    .adminCoverPic{
+      padding-top: 10%;
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .adminProfilePic{
+    height: 114px;
+    /* border: 1px solid black; */
+    width: 35%;
+    border-radius: 50%;
+    position: relative;
+    /* left: 2%; */
+    bottom: 50px;
+
+    }
+
+    .adminProfile{
+      margin-top: 10%;
+      width: 19.2vw;
+      border-radius: 1rem;
+      /* padding-left: 5%; */
+    }
+
+    .profileViewsNo{
+      text-align:center;
+      position: relative;
+      bottom:40px;
+      font-weight: bold;
+      font-size: 29px;
+      color: rgb(114, 104, 104);
+    }
+    .profileViewsText{
+      text-align:center;
+      position: relative;
+      bottom:40px;
+      font-size: 16px;
+      color: rgb(114, 104, 104);
+    }
+
+    .activityCon{
+      background-color: white;
+      width: 19.2vw;
+      border-radius: 1rem;
+      margin-top: 10%;
+
+    }
+
+    .activityCon p{
+      margin-left: 5%;
+    }
+
+    .activityCon h4{
+      padding-top: 5%;
+      padding-bottom: 5%;
+    }
+
+    .Rightcontainer{
+      margin-top: 10%;
+
+    }
+
+    .searchContainer{
+      margin-top: 5%;
+
+    }
+
+    /*------------------------------------Contact 's CSS-----------------------------------*/
+    /* .contactContent{
+      align-items: ;
+    } */
+
+    /* .input-group-addon {
+      border-radius: 4px;
+      border: 0px;
+      background-color: transparent;
+
+    } */
+
+    .headingContainer{
+      justify-content: space-between;
+    }
+
+    @media screen and (max-width: 1200px){
+      .FeedContent{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .FeedContent .adminProfile
+    {
+      /* max-width: 100%;
+      width: 80%; */
+      visibility: hidden;
+    }
+
+    .activityCon
+    {
+      /* max-width: 100%;
+      width: 80%; */
+      visibility: hidden;
+    }
+
+    .contactContainer{
+      /* max-width: 100%;
+      width: 80%; */
+      visibility: hidden;
+
+    }
+
+    .suggestionContainer{
+      /* max-width: 100%;
+      width: 80%; */
+      visibility: hidden;
+
+    }
+
+    .postContainer{
+      max-width: 100%;
+      width: 80%;
+
+    }
+
+    .post-body
+    {
+      order: -1;
+      /* background: red;
+      padding: 8px;
+      margin: 10px; */
+    }
+
+    .adminProfile
+    {
+      /* order: 0; */
+      visibility: hidden;
+    }
+
+    .activity
+    {
+      /* order: 1; */
+      visibility: hidden;
+    }
   }
