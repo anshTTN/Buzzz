@@ -20,19 +20,19 @@ const showAlert=(type,msg)=>{
     setMsg(null)
   },5000)
 }
-  const {state}=useLocation();
-  if(state!=null){
-    console.log(state.passwdChanged)
-    if(state.passwdChanged){
-      showAlert("alert alert-success","Password Changed")
-      state.passwdChanged=false
-    }
+//   const {state}=useLocation();
+//   if(state!=null){
+//     console.log(state.passwdChanged)
+//     if(state.passwdChanged){
+//       showAlert("alert alert-success","Password Changed")
+//       state.passwdChanged=false
+//     }
 
-  }
-if(state!=null && state.isRegistered===true){
-  showAlert('alert alert-success',"Registered Successfuly. Please login to continue")
-  state.isRegistered=false;
-}
+//   }
+// if(state!=null && state.isRegistered===true){
+//   showAlert('alert alert-success',"Registered Successfuly. Please login to continue")
+//   state.isRegistered=false;
+// }
 //google login
 const handleLogin=async (googleData)=>{
   const res=await fetch('/googleAuth',{
@@ -138,7 +138,7 @@ return (
         <h6> <center>Login To Your Account</center></h6>
 
       </div>
-     
+
        <form onSubmit={handleSubmit} className = "login-form">
          <div className="d-grid gap-4">
            <div className="row row_1">
@@ -150,7 +150,7 @@ return (
            </div>
 
            <div className="row row_3">
-             
+
              <div className='col-6'>
              <Link to="/signup">Don't have acccount Click Here to register</Link>
              </div>

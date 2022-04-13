@@ -11,12 +11,12 @@ function Activity() {
         </div>
 
         <div className="d-flex">
-          <i class="fa-solid fa-calendar"></i>
+          <i className="fa-solid fa-calendar"></i>
           <p>Mobile conference 2021</p>
         </div>
 
         <div className="d-flex">
-          <i class="fa-solid fa-user-group"></i>
+          <i className="fa-solid fa-user-group"></i>
           <p>Freelance Developers</p>
         </div>
       </div>
@@ -35,12 +35,12 @@ function Activity() {
         </div>
 
         <div className="d-flex">
-          <i class="fa-solid fa-calendar"></i>
+          <i className="fa-solid fa-calendar"></i>
           <p>Mobile conference 2021</p>
         </div>
 
         <div className="d-flex">
-          <i class="fa-solid fa-user-group"></i>
+          <i className="fa-solid fa-user-group"></i>
           <p>Freelance Developers</p>
         </div>
       </div>
@@ -59,12 +59,12 @@ function Activity() {
         </div>
 
         <div className="d-flex">
-          <i class="fa-solid fa-calendar"></i>
+          <i className="fa-solid fa-calendar"></i>
           <p>Mobile conference 2021</p>
         </div>
 
         <div className="d-flex">
-          <i class="fa-solid fa-user-group"></i>
+          <i className="fa-solid fa-user-group"></i>
           <p>Freelance Developers</p>
         </div>
       </div>

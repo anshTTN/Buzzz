@@ -1,84 +1,83 @@
 import React from 'react'
 import profile from "../images/profile.png";
 import { FaSearch } from "react-icons/fa";
-import {useRef, useState} from "react";
+import {Link} from "react-router-dom";
+import {useEffect, useState} from "react";
 
 function Contacts() {
 
-const [name, setName] = useState(null);
+const [users, setUsers] = useState(null);
+const [loading, setLoading] = useState(true);
 
-function handleChange(e){
+useEffect(()=>{
+searchFriends();
+}, []);
 
-console.log(e.target.value);
-setName(e.target.value);
+
+async function searchFriends(){
+ const result = await fetch(`/searchallfriends`,{
+       method: 'POST',
+       headers:{
+         'content-Type':'application/json',
+         'auth-token':localStorage.getItem('token')
+       }
+     });
+     const data = await result.json();
+       setUsers(data.users);
+       setLoading(false);
 }
 
+if(loading){
+  return(
+    <h1> Loading .. </h1>
+  )
+}else{
 
-
+  if(users.length == 0){
+    return (
+      <>
+      <div className='py-4 activity border contactContainer'>
+             <h4 className="px-3"> Contacts </h4>
+               <hr />
+        <h4 className="px-3"> No friends yet </h4>       
+      </div>
+    </>
+    );
+  }else{
 
 
 
   return (
     <>
-    <div className='py-4 activity border'>
+    <div className='py-4 activity border contactContainer'>
 
 
-
-
-      <div className="d-flex px-3">
-
-       <h4 className="flex-1"> Contacts </h4>
-
-       <div className="input-group rounded flex-2 px-2">
-         <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onChange={handleChange}/>
-         <span className="input-group-text border-0" id="search-addon">
-         <a href={`/users/${name}`}>  <i className="fas fa-search"></i> </a>
-         </span>
-       </div>
-
-       </div>
-
-
-
+       <h4 className="px-3"> Contacts </h4>
 
 <hr />
 
 
 
-<div className="d-flex px-3">
-<img className="circle me-3" src={profile} alt="" />
-
-  <p>Ankit Bisht</p>
-</div>
 
 
 
+{users.map((user) => (
 
-<div className="d-flex px-3">
-<img className="circle me-3" src={profile} alt="" />
+  <div className="d-flex px-3">
+  <img className="circle me-3" src={profile} alt="" />
 
-  <p>Ankit Bisht</p>
-</div>
+    <p>{user.first_name}</p>
+  </div>
 
+))}
 
-
-
-
-<div className="d-flex px-3">
-<img className="circle me-3" src={profile} alt="" />
-
-  <p>Ankit Bisht</p>
-</div>
-
-
-
-
-
-
+<Link to="/searchfriends"> <h5 className="text-center"> See all friends </h5> </Link>
 
      </div>
    </>
   )
+}
+}
 }
 
 export default Contacts
