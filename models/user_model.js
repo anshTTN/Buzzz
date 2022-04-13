@@ -46,6 +46,7 @@ const UserRegistrationSchema=new Schema({
     type:String
   },
   requests:[],
+  friends:[],
     password:{
         type:String,
         default:null
