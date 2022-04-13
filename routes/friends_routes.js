@@ -12,6 +12,7 @@ router.post("/addfriend",auth.verifyUsers, friends.addFriend);
 router.post("/searchallfriends",auth.verifyUsers, friends.searchAllFriends);  /* Done */
 
 
+router.post("/getFriends", friends.getFriends);
 
 
 

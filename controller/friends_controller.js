@@ -117,29 +117,43 @@ if(found){
 
 found[0].requests.forEach((request)=>{
 if(request == senderEmail){
-  flag = 0;
+  flag = 0;                                                     /* Already friend request sent */
 }
 })
 
 found[0].friends.forEach((friend)=>{
 if( friend == senderEmail){
-  flag = -1;
+  flag = -1;                                                      /* Already friends */
 }
 })
 
 
+User.find({email: senderEmail}, function(err, foundSender){
 
-if(flag == 0){
-  return res.status(200).json({status:"alreadyRequested"});
-}else{
-  if(flag == -1){
-    return res.status(200).json({status:"alreadyFriend"});
+  foundSender[0].requests.forEach((request)=>{
+  if(request == receiverEmail){
+    flag = 2;                                                   /* Check own friend request */
+  }
+  })
+
+  if(flag == 0){
+    return res.status(200).json({status:"alreadyRequested"});
   }else{
-    found[0].requests.push(senderEmail);
-    found[0].save();
-    return res.status(200).json({status:"success"});
-  } 
-}
+    if(flag == -1){
+      return res.status(200).json({status:"alreadyFriend"});
+    }else{
+      if(flag == 2){
+        return res.status(200).json({status:"checkOwnRequest"});
+      }else{
+        found[0].requests.push(senderEmail);
+        found[0].save();
+        return res.status(200).json({status:"success"});
+      }
+
+    }
+  }
+
+})
 
 
 }else{
@@ -347,3 +361,15 @@ User.find({ email: senderEmail }, function(err, found){
 //
 //
 // }
+exports.getFriends=(req,res)=>{
+  const {email}= req.body;
+  let posts=[];
+   User.findOne({email:email}).exec((err,user)=>{
+      if(user){
+          return res.status(200).json({status:"success",friends:user.friends})
+      }
+      else{
+          return res.status(200).json({status:"failure",message:"Some error occured",err:err})
+      }
+  })  
+}
