@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import { FaRegImages } from "react-icons/fa";
 import Post from "./Post";
-import Activity from "./Activity";
 import Contacts from "./Contacts";
 import SuggestedContacts from "./SuggestedContacts";
 import { Link } from "react-router-dom";
