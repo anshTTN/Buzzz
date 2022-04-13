@@ -45,17 +45,26 @@ function UserResults(){
            })
        });
        const data = await result.json();
-       if(data.status == "success"){
-         showAlert("alert alert-success", "Friend request sent successfully");
-       }else{
-         if(data.status == "alreadyRequested"){
-           showAlert("alert alert-danger"," A friend request already been sent");
-         }else{
-           if(data.status == "alreadyFriend")
-             showAlert("alert alert-danger"," You are already friends");
-         }
+       switch(data.status) {
 
-       }
+        case "success":
+          showAlert("alert alert-success", "Friend request sent successfully");
+          break;
+        case "alreadyRequested":
+          showAlert("alert alert-danger"," A friend request already been sent");
+          break;
+        case "alreadyFriend":
+          showAlert("alert alert-danger"," You are already friends");
+          break;
+        case "checkOwnRequest":
+          showAlert("alert alert-danger"," Please check your friend requests");
+          break;  
+      
+          default:
+          showAlert("alert alert-danger"," Something went wrong! could not send request");
+      
+      
+      }
 
  }
  sendReq(email);

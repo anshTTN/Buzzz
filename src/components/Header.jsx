@@ -46,6 +46,9 @@ function Header() {
     </Link>
 
     <div className='d-flex'>
+    <Link to="/friendRequests" > 
+    <p className="me-5 mt-3 friendsHeader" >Friend Requests </p>
+    </Link>
       <Link to='/MyProfile'>
       <img className="circle me-3 mt-3" src={profileImg} alt=""/>
       </Link>
@@ -56,8 +59,8 @@ function Header() {
       ):(
         <p className="me-3 mt-3" >{first_name} </p>
       )}
-    <FaFacebookMessenger className="me-3 mt-3" />
-    <Link to="/friendList"> <FaUserAlt className="me-5 mt-3"/> </Link>
+   
+      
     <button type="submit" onClick={logoutBtn}  id="btn_2" className='btn btn-primary mt-2'>Logout</button>
 
     </div>

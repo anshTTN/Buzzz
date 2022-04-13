@@ -27,6 +27,10 @@ function FeedsPage() {
   const [show, setShow] = useState(false);
   const [addPostImage,setAddPostImage]=useState(null)
   const [postText,setPostText]=useState(null)
+  const [posts,setPosts]=useState([])
+  const [friends,setFriends]=useState([])
+
+  // let posts=[];
 
   const showAlert=(type,msg)=>{
     setType(type);
@@ -42,6 +46,7 @@ function FeedsPage() {
   const handleShow = () => setShow(true);
 
   const getUser = async () => {
+    console.log(posts)
     const res = await fetch("/getUser", {
       method: "POST",
       headers: {
@@ -50,6 +55,7 @@ function FeedsPage() {
       },
     });
     const data = await res.json();
+    console.log(data)
     setEmail(data.user.email);
     setDesignation(data.user.designation);
     setFirstName(data.user.first_name);
@@ -63,7 +69,41 @@ function FeedsPage() {
     setBio(data.user.bio);
     setCoverImg(data.user.coverImg);
     setProfileImg(data.user.profileImg);
+    setFriends(data.user.friends)
+
+    const res1 = await fetch('/getFriends', {
+      method: "POST",
+      body:JSON.stringify({
+        email:data.user.email
+      }),
+      headers: {
+        "content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+    });
+    const data1 = await res1.json();
+    data1.friends.map(async e=>{
+      const res2 = await fetch('/getPosts', {
+        method: "POST",
+        body:JSON.stringify({
+          email:e
+        }),
+        headers: {
+          "content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+      });
+      const data2 = await res2.json();
+    data2.posts.map(e=>{
+      posts.push(e)
+    })
+      console.log(posts)
+    })
   };
+
+const getFriends=async(data)=>{
+    console.log(data)
+};
 
   useEffect(() => {
     getUser();
@@ -71,7 +111,6 @@ function FeedsPage() {
 
 const handlePostText=(e)=>{
 setPostText(e.target.value);
-console.log(postText)
 }
 
 const addImage=async(e)=>{
@@ -142,12 +181,12 @@ const createPost=async()=>{
 
                   <div className="row">
                     <div className="col">
-                      <p className="profileViewsNo">4</p>
+                      <p className="profileViewsNo">{friends.length}</p>
                       <p className="profileViewsText">Friends</p>
                       <div className="line"></div>
                     </div>
                     <div className="col">
-                      <p className="profileViewsNo">10</p>
+                      <p className="profileViewsNo">3</p>
                       <p className="profileViewsText">Post</p>
                     </div>
                   </div>
@@ -214,8 +253,14 @@ const createPost=async()=>{
 
               </Modal>
               {/* *************************POSTS************************************************ */}
-              <Post />
-              <Post />
+              {/* {console.log(posts) */}
+              {/* // posts.forEach(e=>{ */}
+                <Post />
+                <Post />
+                <Post />
+              {/* // })
+              // } */}
+              
               </div>
             </div>
             {/* *******************************3rd Col******************************************* */}
