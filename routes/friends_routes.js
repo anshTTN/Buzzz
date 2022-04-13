@@ -5,9 +5,11 @@ const auth=require('../controller/auth');
 
 
 
-router.get("/searchfriends",auth.verifyUsers, friends.searchFriends);
+// router.post("/searchfriends",auth.verifyUsers, friends.searchFriends);   
 
-router.post("/addfriend/:email", friends.addFriend);
+router.post("/addfriend",auth.verifyUsers, friends.addFriend);
+
+router.post("/searchallfriends",auth.verifyUsers, friends.searchAllFriends);  /* Done */
 
 
 

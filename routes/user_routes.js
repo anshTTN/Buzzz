@@ -7,7 +7,13 @@ const userFriendsController = require('../controller/friends_controller');
 
 
 
-router.get("/searchusers/:name", userFriendsController.searchUsers);
+router.post("/searchusers",auth.verifyUsers, userFriendsController.searchUsers); /* Done */
+
+router.post("/searchallusers",auth.verifyUsers, userFriendsController.searchAllUsers); /* Done */
+
+router.post("/searchrequests",auth.verifyUsers, userFriendsController.searchRequests); /* Done */
+
+router.post("/acceptfriendrequest",auth.verifyUsers, userFriendsController.acceptFriendRequest);
 
 router.post("/getUser",auth.verifyUsers, userLoginController.getUser);
 
